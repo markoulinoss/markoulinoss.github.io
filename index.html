@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internship Match</title>
+  <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+  <script src="script.js" defer></script> <!-- Link to JS file -->
+</head>
+<body>
+  <!-- Blue overlay for the background -->
+  <div class="blue-overlay"></div>
+
+  <div class="container">
+    <h1 id="intro">Let's find your internship match!</h1>
+    <div id="quiz">
+      <button id="startButton" class="cta" onclick="startQuiz()">Let's Go</button>
+    </div>
+    <div id="result" style="margin-top: 30px;"></div>
+  </div>
+
+  <!-- Modal for Hint -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Hint:</h2>
+      <p>Scroll down to sign up!</p>
+    </div>
+  </div>
+</body>
+</html>
