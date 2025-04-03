@@ -72,9 +72,10 @@ function displayResult() {
   resultDiv.innerHTML = `
     <h2>Your Perfect Match: Global Talent</h2>
     <p>Suggested Internship: Global Talent</p>
-    <a href="https://aiesec.org/" class="apply-button">Apply Now</a>
+    <a href="https://aiesec.gr/intern/" class="apply-button">Apply Now</a>
   `;
 }
+
 
 // Function to show the hint modal
 function showModal() {
