@@ -4,14 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Internship Match</title>
-  <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
-  <script src="script.js" defer></script> <!-- Link to JS file -->
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Blue overlay for the background -->
   <div class="blue-overlay"></div>
-
   <div class="container">
     <h1 id="intro">Let's find your internship match!</h1>
     <div id="quiz">
@@ -19,8 +18,12 @@
     </div>
     <div id="result" style="margin-top: 30px;"></div>
   </div>
+  <!-- Inserting the banner image just below the quiz -->
+  <div class="banner">
+      <img src="path/to/your/banner.jpg" alt="Creating Young Leaders Together">
+  </div>
 
-  <!-- Modal for Hint -->
+
   <div id="myModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>

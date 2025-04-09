@@ -9,8 +9,8 @@ const questions = [
     options: ["People", "Data"]
   },
   {
-    question: "What motivates you the most: impact, growth, or discovery?",
-    options: ["Impact", "Growth", "Discovery"]
+    question: "What motivates you the most: Impact, Growth, or Innovation?",
+    options: ["Impact", "Growth", "Innovation"]
   },
   {
     question: "What are you studying?",
@@ -23,8 +23,8 @@ const questions = [
 ];
 
 function startQuiz() {
-  document.getElementById("startButton").style.display = "none";  // Hide the "Let's Go" button
-  showNextQuestion();  // Start the quiz
+  document.getElementById("startButton").style.display = "none";
+  showNextQuestion();
 }
 
 function showNextQuestion() {
@@ -39,51 +39,51 @@ function showNextQuestion() {
     <h2>${question.question}</h2>
     <div class="button-group">
       ${question.options.map(option => 
-        `<button class="option-button" type="button" onclick="performAction('${option}')">${option}</button>`
+        `<button class="option-button" onclick="performAction('${option}')">${option}</button>`
       ).join('')}
     </div>
   `;
 }
 
 function performAction(answer) {
-  // If the user selects "1st - 3rd Year", show the "better luck next year" message
-  if (currentQuestion === 4 && answer === "1st - 3rd Year") {
-    document.getElementById('quiz').innerHTML = `
-      <h2>You are a kid, better luck next year!</h2>
-      <p>You can try <a href="https://aiesec.gr/volunteer/" target="_blank">Global Volunteer</a></p>
-    `;
-    return;
+  // Special handling for the last question
+  if (currentQuestion === 4) {
+    if (answer === "1st - 3rd Year") {
+      document.getElementById('quiz').innerHTML = `
+        <h2>You are still young for an intersnhip. Consider Global Volunteer!</h2>
+        <p>You can try <a href="https://aiesec.gr/volunteer/" target="_blank">Global Volunteer</a></p>`;
+      return;
+    } else if (answer === "4th Year" || answer === "Post-graduate") {
+      document.getElementById('quiz').innerHTML = `
+        <h2>Your Perfect Match: Global Talent</h2>
+        <p>Suggested Internship: <a href="https://aiesec.gr/intern/" target="_blank">Global Talent</a></p>`;
+      return;
+    }
   }
 
-  // If the user selects "4th Year" or "Post-graduate", show the internship match result
-  if (currentQuestion === 4 && (answer === "4th Year" || answer === "Post-graduate")) {
-    displayResult();
-    return;
-  }
-
+  // Move to the next question if not the last or special condition hasn't triggered
   currentQuestion++;
   if (currentQuestion < questions.length) {
     showNextQuestion();
+  } else {
+    displayResult();
   }
 }
 
 function displayResult() {
   const resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = `
-    <h2>Your Perfect Match: Global Talent</h2>
-    <p>Suggested Internship: Global Talent</p>
-    <a href="https://aiesec.gr/intern/" class="apply-button">Apply Now</a>
-  `;
+  resultDiv.innerHTML = "<h2>Your Perfect Match: Global Talent</h2><p>Suggested Internship: Global Talent</p>";
 }
 
-
-// Function to show the hint modal
 function showModal() {
-  document.getElementById("myModal").style.display = "block";
+  const modal = document.getElementById("myModal");
+  modal.style.opacity = 0;
+  modal.style.display = "block";
+  setTimeout(() => modal.style.opacity = 1, 10);
 }
 
-// Function to close the hint modal
 function closeModal() {
-  document.getElementById("myModal").style.display = "none";
-  displayResult(); // Show the final result after closing the hint modal
+  const modal = document.getElementById("myModal");
+  modal.style.opacity = 0;
+  setTimeout(() => modal.style.display = "none", 300);
 }
