@@ -1,89 +1,127 @@
-let currentQuestion = 0;
-const questions = [
-  {
-    question: "What type of weather do you prefer?",
-    options: ["Hot", "Cold", "Rainy"]
-  },
-  {
-    question: "Do you like working with people or data?",
-    options: ["People", "Data"]
-  },
-  {
-    question: "What motivates you the most: Impact, Growth, or Innovation?",
-    options: ["Impact", "Growth", "Innovation"]
-  },
-  {
-    question: "What are you studying?",
-    options: ["Business Administration", "Economics", "Marketing", "Computer Science", "Finance"]
-  },
-  {
-    question: "What year are you in University?",
-    options: ["1st - 3rd Year", "4th Year", "Post-graduate"]
-  }
-];
+const THEMES = ["amber", "green", "paper"];
+const THEME_KEY = "phosphor";
 
-function startQuiz() {
-  document.getElementById("startButton").style.display = "none";
-  showNextQuestion();
-}
+const root = document.documentElement;
+const page = document.getElementById("page");
+const shell = document.getElementById("shell");
+const status = document.getElementById("status");
+const position = document.getElementById("position");
+const help = document.getElementById("help");
+const themeButton = document.getElementById("theme-button");
+const sections = [...document.querySelectorAll("main section")];
 
-function showNextQuestion() {
-  if (currentQuestion >= questions.length) {
-    displayResult();
-    return;
-  }
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const question = questions[currentQuestion];
-  const quizDiv = document.getElementById("quiz");
-  quizDiv.innerHTML = `
-    <h2>${question.question}</h2>
-    <div class="button-group">
-      ${question.options.map(option => 
-        `<button class="option-button" onclick="performAction('${option}')">${option}</button>`
-      ).join('')}
-    </div>
-  `;
-}
-
-function performAction(answer) {
-  // Special handling for the last question
-  if (currentQuestion === 4) {
-    if (answer === "1st - 3rd Year") {
-      document.getElementById('quiz').innerHTML = `
-        <h2>You are still young for an intersnhip. Consider Global Volunteer!</h2>
-        <p>You can try <a href="https://aiesec.gr/volunteer/" target="_blank">Global Volunteer</a></p>`;
-      return;
-    } else if (answer === "4th Year" || answer === "Post-graduate") {
-      document.getElementById('quiz').innerHTML = `
-        <h2>Your Perfect Match: Global Talent</h2>
-        <p>Suggested Internship: <a href="https://aiesec.gr/intern/" target="_blank">Global Talent</a></p>`;
-      return;
-    }
-  }
-
-  // Move to the next question if not the last or special condition hasn't triggered
-  currentQuestion++;
-  if (currentQuestion < questions.length) {
-    showNextQuestion();
-  } else {
-    displayResult();
+function readStoredTheme() {
+  try {
+    return localStorage.getItem(THEME_KEY);
+  } catch {
+    return null;
   }
 }
 
-function displayResult() {
-  const resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = "<h2>Your Perfect Match: Global Talent</h2><p>Suggested Internship: Global Talent</p>";
+function applyTheme(theme, remember) {
+  root.dataset.theme = theme;
+  themeButton.textContent = theme;
+  if (!remember) return;
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch {
+    // Storage can be blocked; the theme just won't persist.
+  }
 }
 
-function showModal() {
-  const modal = document.getElementById("myModal");
-  modal.style.opacity = 0;
-  modal.style.display = "block";
-  setTimeout(() => modal.style.opacity = 1, 10);
+function nextTheme() {
+  const next = THEMES[(THEMES.indexOf(root.dataset.theme) + 1) % THEMES.length];
+  applyTheme(next, true);
 }
 
-function closeModal() {
-  const modal = document.getElementById("myModal");
-  modal.style.opacity = 0;
-  setTimeout(() => modal.style.display = "none", 300);
+function isAtEnd() {
+  return window.scrollY >= document.documentElement.scrollHeight - window.innerHeight - 2;
 }
+
+function currentSectionIndex() {
+  if (isAtEnd()) return sections.length - 1;
+  let current = 0;
+  sections.forEach((section, index) => {
+    if (section.getBoundingClientRect().top <= window.innerHeight * 0.25) current = index;
+  });
+  return current;
+}
+
+function updatePosition() {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const percent = scrollable > 0 ? Math.round((window.scrollY / scrollable) * 100) : 100;
+  const name = sections[currentSectionIndex()].querySelector("h2").textContent;
+  position.textContent = `${name} ${isAtEnd() ? "(END)" : `${percent}%`}`;
+}
+
+function typeCommand() {
+  const command = document.getElementById("command");
+  if (reducedMotion) return;
+  const text = command.textContent;
+  let typed = 0;
+  command.textContent = "";
+  const timer = setInterval(() => {
+    typed += 1;
+    command.textContent = text.slice(0, typed);
+    if (typed === text.length) clearInterval(timer);
+  }, 45);
+}
+
+function quit() {
+  page.hidden = true;
+  status.hidden = true;
+  shell.hidden = false;
+  document.getElementById("reopen").focus();
+}
+
+function reopen() {
+  shell.hidden = true;
+  page.hidden = false;
+  status.hidden = false;
+  window.scrollTo({ top: 0, behavior: "instant" });
+  updatePosition();
+}
+
+function jumpSection(step) {
+  const target = sections[currentSectionIndex() + step];
+  if (target) target.scrollIntoView({ behavior: "instant" });
+}
+
+function scrollByLines(lines) {
+  const lineHeight = parseFloat(getComputedStyle(document.body).lineHeight);
+  window.scrollBy({ top: lines * lineHeight, behavior: "instant" });
+}
+
+const KEYS = {
+  j: () => scrollByLines(1),
+  k: () => scrollByLines(-1),
+  d: () => window.scrollBy({ top: window.innerHeight / 2, behavior: "instant" }),
+  u: () => window.scrollBy({ top: -window.innerHeight / 2, behavior: "instant" }),
+  g: () => window.scrollTo({ top: 0, behavior: "instant" }),
+  G: () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "instant" }),
+  n: () => jumpSection(1),
+  p: () => jumpSection(-1),
+  t: nextTheme,
+  q: quit,
+  h: () => help.showModal(),
+};
+
+document.addEventListener("keydown", (event) => {
+  if (event.ctrlKey || event.metaKey || event.altKey || help.open || !shell.hidden) return;
+  const action = KEYS[event.key];
+  if (action) action();
+});
+
+themeButton.addEventListener("click", nextTheme);
+document.getElementById("help-button").addEventListener("click", () => help.showModal());
+document.getElementById("reopen").addEventListener("click", reopen);
+window.addEventListener("scroll", updatePosition, { passive: true });
+window.addEventListener("resize", updatePosition);
+
+const storedTheme = readStoredTheme();
+applyTheme(THEMES.includes(storedTheme) ? storedTheme : "amber", false);
+status.hidden = false;
+updatePosition();
+typeCommand();

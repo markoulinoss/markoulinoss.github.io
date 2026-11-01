@@ -1,35 +1,231 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="amber">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Internship Match</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Markos Balaskas | Portfolio</title>
+  <meta name="description" content="Markos Balaskas: Management Science & Technology undergraduate and researcher at AUEB, working across data analysis, machine learning and software.">
+  <meta property="og:title" content="Markos Balaskas | Portfolio">
+  <meta property="og:description" content="Data analysis, machine learning and software, written up as a man page.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://markoulinoss.github.io/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23110d07'/%3E%3Crect x='3' y='3' width='6' height='10' fill='%23ffb000'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="blue-overlay"></div>
-  <div class="container">
-    <h1 id="intro">Let's find your internship match!</h1>
-    <div id="quiz">
-      <button id="startButton" class="cta" onclick="startQuiz()">Let's Go</button>
-    </div>
-    <div id="result" style="margin-top: 30px;"></div>
-  </div>
-  <!-- Inserting the banner image just below the quiz -->
-  <div class="banner">
-      <img src="path/to/your/banner.jpg" alt="Creating Young Leaders Together">
+  <a class="skip" href="#description">Skip to content</a>
+
+  <div id="page" class="page">
+    <p class="prompt" aria-hidden="true"><span class="dim">markos@aueb:~$</span> <span id="command">man balaskas</span><span class="cursor"></span></p>
+
+    <header class="running-head">
+      <span>BALASKAS(1)</span>
+      <span class="running-title">Portfolio Manual</span>
+      <span>BALASKAS(1)</span>
+    </header>
+
+    <main>
+      <section id="name">
+        <h2>NAME</h2>
+        <div class="body">
+          <h1>Markos Balaskas</h1>
+          <p>Management Science &amp; Technology undergraduate and researcher. Athens, Greece.</p>
+        </div>
+      </section>
+
+      <section id="synopsis">
+        <h2>SYNOPSIS</h2>
+        <nav class="body synopsis" aria-label="Sections">
+          <strong>balaskas</strong>
+          <a href="#experience">[--experience]</a>
+          <a href="#projects">[--projects]</a>
+          <a href="#open-source">[--open-source]</a>
+          <a href="#skills">[--skills]</a>
+          <a href="#education">[--education]</a>
+          <a href="#see-also">[--contact]</a>
+        </nav>
+      </section>
+
+      <section id="description">
+        <h2>DESCRIPTION</h2>
+        <div class="body">
+          <p>Undergraduate Researcher and former Teaching Assistant at the Athens University of Economics and Business (AUEB). I combine data analysis and software development with leadership and stakeholder experience from two years at AIESEC.</p>
+          <p>Looking to apply this mix of technical, analytical and financial skills to applied research and real-world business analytics problems.</p>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>EXPERIENCE</h2>
+        <div class="body">
+          <article class="entry">
+            <div class="entry-head"><h3>Undergraduate Researcher</h3><span class="dim">Aug 2026 - present</span></div>
+            <p class="dim">AUEB</p>
+            <p>Contributing to faculty-led research projects, applying data analysis and statistical methods.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3>Teaching Assistant</h3><span class="dim">Feb 2026 - Jun 2026</span></div>
+            <p class="dim">AUEB, Software Engineering in Practice</p>
+            <p>Designed and taught tutorials on Docker, Python unit testing, software security and LLMs for code prediction.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3>Logistics &amp; Experience Volunteer</h3><span class="dim">Nov 2025 - May 2026</span></div>
+            <p class="dim">AUEB MST Conference</p>
+            <p>Assisted with event logistics, on-site coordination and food sponsorships.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3>University &amp; Public Relations Manager</h3><span class="dim">Jul 2025 - Jan 2026</span></div>
+            <p class="dim">AIESEC in Greece</p>
+            <p>Led university relations and PR, strengthening visibility across partnered institutions. Delivered workshops, represented AIESEC at campus events and managed CRM tools.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3>Team Lead Manager, Marketing</h3><span class="dim">Feb 2025 - Jul 2025</span></div>
+            <p class="dim">AIESEC in Greece</p>
+            <p>Led a team of 3, overseeing KPI tracking, SOPs and performance development. Analyzed KPIs, funnels and conversion rates to optimize attraction strategy.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3>Sales &amp; Customer Experience Member</h3><span class="dim">Jan 2024 - Feb 2025</span></div>
+            <p class="dim">AIESEC in Greece</p>
+            <p>Managed B2C sales and customer experience, converting leads into prospects.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>PROJECTS</h2>
+        <div class="body">
+          <article class="entry">
+            <div class="entry-head"><h3><a href="https://github.com/markoulinoss/Data_Analysis_Machine_Learning_Assignments">Data Analysis &amp; Machine Learning</a></h3><span class="dim">Python</span></div>
+            <p>Predicted human risky choices from decision-theory features with a stacked XGBoost/LightGBM ensemble tuned with Optuna. Replicated two 2025 Nature studies using pandas, statsmodels, regression and ANOVA.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3><a href="https://github.com/markoulinoss/questerlog">QuesterLog</a></h3><span class="dim">TypeScript</span></div>
+            <p>Full-stack daily-quest app around ESG/SDG goals, with streaks, badges and AI-generated quests. Built with Next.js, Tailwind CSS and Supabase.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3><a href="https://github.com/markoulinoss/business-analytics-project">Internet Cafe Game Buyer</a></h3><span class="dim">AI skills</span></div>
+            <p>Three chained skills that find, review and match new games to an internet cafe's customers, then draft a purchase shortlist email.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3><a href="https://github.com/markoulinoss/Algorithms_Data_Structures_Assignments">Algorithms &amp; Data Structures</a></h3><span class="dim">Python</span></div>
+            <p>Command-line programs for sliding-window perplexity of a language model, graph search with BFS over a product graph, and matchstick equations solved by DFS with pruning.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3><a href="https://github.com/markoulinoss/CakeHunt">CakeHunt</a></h3><span class="dim">Lua / LÖVE</span></div>
+            <p>A short 2D RPG adventure, made as a birthday gift.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3>Erasmus App</h3><span class="dim">Java / JavaFX</span></div>
+            <p>Application supporting exchange students, built with a classmate.</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3>FXReport Optimization Information System</h3><span class="dim">Piraeus Bank project</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="open-source">
+        <h2>OPEN SOURCE</h2>
+        <div class="body">
+          <article class="entry">
+            <h3><a href="https://github.com/openfoodfacts">Open Food Facts</a></h3>
+            <ul class="changes">
+              <li><span class="tag">[done]</span> <a href="https://crowdin.com/profile/markoulinoss">Greek localization via Crowdin</a></li>
+              <li><span class="tag">[open]</span> <a href="https://github.com/openfoodfacts/openfoodfacts-explorer/pull/2124">Avoid duplicate tooltip over country popup</a></li>
+            </ul>
+          </article>
+          <article class="entry">
+            <h3><a href="https://github.com/lesspass/lesspass">LessPass</a></h3>
+            <ul class="changes">
+              <li><span class="tag">[open]</span> <a href="https://github.com/lesspass/lesspass/pull/893">Password strength indicator</a></li>
+              <li><span class="tag">[open]</span> <a href="https://github.com/lesspass/lesspass/pull/888">Minimum master password length validation</a></li>
+            </ul>
+          </article>
+          <article class="entry">
+            <h3><a href="https://github.com/PasscodesApp/Passcodes">Passcodes</a></h3>
+            <ul class="changes">
+              <li><span class="tag">[done]</span> <a href="https://github.com/PasscodesApp/Passcodes/pull/202">Documentation fixes in the README</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>SKILLS</h2>
+        <dl class="body options">
+          <dt>--code</dt>
+          <dd>Python, Java, JavaFX, TypeScript, SQL, HTML, Next.js, Supabase, Docker, Git/GitHub</dd>
+          <dt>--data</dt>
+          <dd>pandas, scikit-learn, XGBoost, LightGBM, Optuna, SHAP, statsmodels, Jupyter, IBM SPSS</dd>
+          <dt>--finance</dt>
+          <dd>Sage 50, Financial Accounting</dd>
+          <dt>--people</dt>
+          <dd>Problem solving, attention to detail, organization, communication, teaching</dd>
+          <dt>--lang</dt>
+          <dd>English (full professional), French (elementary)</dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h2>EDUCATION</h2>
+        <div class="body">
+          <article class="entry">
+            <div class="entry-head"><h3>BSc Management Science and Technology</h3><span class="dim">Oct 2023 - Jun 2027 (expected)</span></div>
+            <p class="dim">Athens University of Economics and Business</p>
+          </article>
+          <article class="entry">
+            <div class="entry-head"><h3>Minor in Accounting and Finance</h3><span class="dim">Sep 2025 - Jun 2027 (expected)</span></div>
+            <p class="dim">The American College of Greece (Deree)</p>
+            <p>Coursework in Financial Accounting, with hands-on training in Sage 50.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="see-also">
+        <h2>SEE ALSO</h2>
+        <dl class="body options">
+          <dt>email</dt>
+          <dd><a href="mailto:balaskasmarkos@gmail.com">balaskasmarkos@gmail.com</a></dd>
+          <dt>github</dt>
+          <dd><a href="https://github.com/markoulinoss">github.com/markoulinoss</a></dd>
+          <dt>linkedin</dt>
+          <dd><a href="https://www.linkedin.com/in/markos-balaskas-a6a823295/">linkedin.com/in/markos-balaskas-a6a823295</a></dd>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="running-head">
+      <span>markoulinoss.github.io</span>
+      <span class="running-title">November 2026</span>
+      <span>BALASKAS(1)</span>
+    </footer>
   </div>
 
+  <p id="shell" class="shell" hidden><span class="dim">markos@aueb:~$</span> <button id="reopen" type="button">man balaskas</button><span class="cursor"></span></p>
 
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>Hint:</h2>
-      <p>Scroll down to sign up!</p>
-    </div>
+  <div id="status" class="status" hidden>
+    <span class="position"><span class="manual">balaskas(1) </span><span id="position"></span></span>
+    <span class="status-actions">
+      <button id="help-button" type="button">help</button>
+      <button id="theme-button" type="button">amber</button>
+    </span>
   </div>
+
+  <dialog id="help" class="help" aria-label="Keyboard commands">
+    <h2>SUMMARY OF LESS COMMANDS</h2>
+    <dl class="keys">
+      <dt>j / k</dt><dd>line down / up</dd>
+      <dt>d / u</dt><dd>half page down / up</dd>
+      <dt>g / G</dt><dd>top / bottom</dd>
+      <dt>n / p</dt><dd>next / previous section</dd>
+      <dt>t</dt><dd>switch phosphor</dd>
+      <dt>q</dt><dd>quit</dd>
+      <dt>h</dt><dd>this help</dd>
+    </dl>
+    <form method="dialog"><button type="submit">close</button></form>
+  </dialog>
 </body>
 </html>
