@@ -421,6 +421,10 @@ time,
     --gutter: 16px;
   }
 
+  .topnav-extra {
+    display: none;
+  }
+
   .cover {
     padding-top: 2.5rem;
   }
